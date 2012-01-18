@@ -4,6 +4,8 @@ const Main = imports.ui.main;
 const Lang = imports.lang;
 const Shell = imports.gi.Shell;
 const PopupMenu = imports.ui.popupMenu;
+const Gettext = imports.gettext;
+const _ = Gettext.gettext;
 
 let item, userMenu;
 
@@ -13,7 +15,10 @@ function _onAdvancedSettingsActivate() {
     app.activate();
 }
 
-function init() {
+function init(extensionMeta) {
+    let userExtensionLocalePath = extensionMeta.path + '/locale';
+    Gettext.bindtextdomain("advanced-settings-in-usermenu@nuware.ru", userExtensionLocalePath);
+    Gettext.textdomain("advanced-settings-in-usermenu@nuware.ru");
     userMenu = Main.panel._statusArea.userMenu.menu;
 }
 
