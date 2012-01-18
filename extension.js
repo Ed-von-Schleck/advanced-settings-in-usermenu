@@ -3,8 +3,10 @@ const St = imports.gi.St;
 const Main = imports.ui.main;
 const Lang = imports.lang;
 const Shell = imports.gi.Shell;
+const GLib = imports.gi.GLib;
 const PopupMenu = imports.ui.popupMenu;
 const Gettext = imports.gettext;
+
 const _ = Gettext.gettext;
 
 let item, userMenu;
@@ -16,8 +18,7 @@ function _onAdvancedSettingsActivate() {
 }
 
 function init(extensionMeta) {
-    let userExtensionLocalePath = extensionMeta.path + '/locale';
-    Gettext.bindtextdomain("advanced-settings-in-usermenu@nuware.ru", userExtensionLocalePath);
+    Gettext.bindtextdomain("advanced-settings-in-usermenu@nuware.ru", GLib.build_filenamev([extensionMeta.path, 'locale']));
     Gettext.textdomain("advanced-settings-in-usermenu@nuware.ru");
     userMenu = Main.panel._statusArea.userMenu.menu;
 }
