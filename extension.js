@@ -19,7 +19,6 @@ function _onAdvancedSettingsActivate() {
 
 function init(extensionMeta) {
     Gettext.bindtextdomain("advanced-settings-in-usermenu@nuware.ru", GLib.build_filenamev([extensionMeta.path, 'locale']));
-    Gettext.textdomain("advanced-settings-in-usermenu@nuware.ru");
     userMenu = Main.panel._statusArea.userMenu.menu;
 }
 
